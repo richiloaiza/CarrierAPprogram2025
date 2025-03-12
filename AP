@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Hiring Process for Apprenticeship Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #003c8f;
+      color: #333;
+      padding: 20px;
+    }
+    /* Header with background image and overlay */
+    .page-header {
+      position: relative;
+      background: url('https://images.carriercms.com/image/upload/w_1900,h_400,c_fill,g_center,q_auto,f_auto/v1648716801/carrier/commercial-hvac-europe/service/carrier-bluedge-service-technician-repair_h.jpg') no-repeat center center;
+      background-size: cover;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+    /* Overlay for dark shadow */
+    .page-header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+    .page-title {
+      position: relative;
+      z-index: 1;
+      font-size: 3.5rem; /* Increased font size for emphasis */
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+    }
+    /* White strip containing the introductory paragraph, centered */
+    .white-strip {
+      background: #fff;
+      max-width: 800px;
+      width: 100%;
+      padding: 20px;
+      margin: 20px auto;
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.6;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    /* Pillars Tabs Container with rounded corners */
+    .tab-container {
+      max-width: 800px;
+      margin: 0 auto 10px auto;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .tab-buttons {
+      display: flex;
+      border-bottom: 2px solid #d3dce6;
+      background: rgba(255, 255, 255, 0.7);
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+    .tab-button {
+      flex: 1;
+      padding: 15px;
+      background: transparent;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-align: center;
+    }
+    .tab-button.active,
+    .tab-button:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+    /* Pillar Content (hidden by default) */
+    .tab-content {
+      border-radius: 8px;
+      transition: border-radius 0.3s;
+    }
+    .tab-content.active {
+      border-radius: 20px;
+    }
+    /* --- Pilaar 1 --- */
+    .tab-button[data-tab="tab1"]:hover {
+      background: #AECBFA;
+      color: #333;
+    }
+    .tab-button[data-tab="tab1"].active {
+      background: #3b82f6;
+      color: #fff;
+    }
+    /* --- Pilaar 2 --- */
+    .tab-button[data-tab="tab2"]:hover {
+      background: #AECBFA; /* Light purple on hover */
+      color: #333;
+    }
+    .tab-button[data-tab="tab2"].active {
+      background: #7C3AED;
+      color: #fff;
+    }
+    /* --- Pilaar 3 --- */
+    .tab-button[data-tab="tab3"]:hover {
+      background: #93C5FD;
+      color: #333;
+    }
+    .tab-button[data-tab="tab3"].active {
+      background: #1D4ED8;
+      color: #fff;
+    }
+    .tab-content {
+      display: none;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      transition: border-radius 0.3s;
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    /* Content Styles for Pillars */
+    .tab-content h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #3b82f6;
+    }
+    .tab-content p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    .tab-content ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+    .tab-content li {
+      margin-bottom: 6px;
+    }
+    /* Hover effect on tasks: turn blue and bold */
+    .details-content li {
+      transition: color 0.3s ease, font-weight 0.3s ease;
+    }
+    .details-content li:hover {
+      color: #3b82f6;
+      font-weight: bold;
+    }
+    /* Minimaliseer button */
+    .minimize-button {
+      display: block;
+      margin: 20px auto 0;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      background: #e2e8f0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .minimize-button:hover {
+      background: #d1dce4;
+    }
+    /* Timeline container */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 40px auto;
+    }
+    .timeline-item:hover .timeline-details {
+      box-shadow: 0 0 10px 2px #3b82f6;
+    }
+    /* Single vertical line behind all items */
+    .timeline::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 30px;
+      width: 4px;
+      background-color: #d3dce6;
+      z-index: 0;
+    }
+    /* Each timeline item */
+    .timeline-item {
+      position: relative;
+      margin: 40px 0;
+      padding-left: 60px; 
+    }
+    /* Circle marker, centered on the line */
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border: 3px solid #3b82f6;
+      border-radius: 50%;
+      z-index: 1;
+      transition: all 0.3s ease;
+      box-shadow: none;
+    }
+    /* When details are open, highlight the circle */
+    .timeline-item.open::before {
+      background: #3b82f6;
+      border: none;
+      box-shadow: 0 0 10px #3b82f6;
+    }
+    /* Details box styling */
+    details.timeline-details {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      padding: 15px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: box-shadow 0.3s ease;
+      text-align: left;
+      display: block;
+      width: 100%;
+    }
+    details.timeline-details[open] {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    details.timeline-details summary {
+      list-style: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      padding-right: 35px;
+      text-align: left;
+    }
+    details.timeline-details summary::-webkit-details-marker {
+      display: none;
+    }
+    details.timeline-details summary::after {
+      content: "➤";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%) rotate(0deg);
+      transition: transform 0.3s ease;
+      font-size: 1.2rem;
+      color: #3b82f6;
+    }
+    details.timeline-details[open] summary::after {
+      transform: translateY(-50%) rotate(90deg);
+    }
+    .details-content {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #4b5563;
+      text-align: left;
+    }
+    .details-content p {
+      margin-bottom: 10px;
+    }
+    .details-content ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+    .details-content li {
+      margin-bottom: 6px;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .tab-buttons {
+        flex-direction: column;
+      }
+      .timeline::after {
+        left: 20px;
+      }
+      .timeline-item {
+        margin: 30px 0;
+        padding-left: 50px;
+      }
+      .timeline-item::before {
+        left: 12px;
+      }
+    }
+    /* Fixed control buttons at bottom-right */
+    #controls {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+      z-index: 9999;
+    }
+    #controls button {
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: #f1f5f9;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    #controls button:hover {
+      background: #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with background image and overlay -->
+  <header class="page-header">
+    <h1 class="page-title">TA Hiring Process for Apprenticeship Program</h1>
+  </header>
+
+  <!-- White strip containing the introductory paragraph, centered -->
+  <div class="white-strip">
+    <p>
+      Welcome to our TA-proces en Kandidatenpijlers page. This portal showcases the hiring process and the three pillars of our apprenticeship program—from candidate selection to onboarding.
+    </p>
+  </div>
+
+  <!-- Pillars container loaded via JavaScript -->
+  <div class="pillars"></div>
+  
+  <!-- Timeline container loaded via JavaScript -->
+  <div class="timeline"></div>
+  
+  <!-- Control buttons for language toggle and editing -->
+  <div id="controls">
+    <button id="toggleLanguage">Change Language</button>
+    <button id="toggleEdit">Edit Content</button>
+  </div>
+  
+  <script>
+    // Content for pillars in Dutch and English
+    const pillarsContent = {
+      nl: `
+<div class="tab-container">
+  <div class="tab-buttons">
+    <button class="tab-button" data-tab="tab1">Pilaar 1</button>
+    <button class="tab-button" data-tab="tab2">Pilaar 2</button>
+    <button class="tab-button" data-tab="tab3">Pilaar 3</button>
+  </div>
+</div>
+<div class="tab-content" id="tab1">
+  <h2>Pilaar 1: BBL Studentenleerling (3 jaar)</h2>
+  <p><strong>Leeftijd:</strong> 15+</p>
+  <p><strong>Werk:</strong> 4 dagen per week</p>
+  <p><strong>Studie:</strong> 1 dag op school (gekoppeld aan het Ministerie van Onderwijs)</p>
+  <p><strong>Opleidingsfocus:</strong> Diploma-georiënteerde opleiding</p>
+  <p><strong>Wervingscyclus:</strong> 2 keer per jaar (januari &amp; juli)</p>
+  <p><strong>Startdata:</strong> maart &amp; september</p>
+  <h3>Ideaal Kandidaat Profiel</h3>
+  <p>Voorbeeld Kandidaat: Tom Janssen, 16 jaar oud, afrondende middelbare school, houdt ervan om met gereedschap te werken en zoekt een stabiele carrière.</p>
+  <p><strong>Waarom dit programma?</strong> Wil school en werk combineren om een carrière in koeltechniek op te bouwen.</p>
+  <h3>Potentiële Achtergronden:</h3>
+  <ul>
+    <li>Middelbare scholieren (VMBO, MBO niveau 2-3)</li>
+    <li>Algemene arbeiders met interesse in technische beroepen</li>
+    <li>Schoolverlaters op zoek naar een gestructureerd leertraject</li>
+    <li>Junior magazijnmedewerkers met interesse in mechanica</li>
+    <li>Assistent-monteurs in de automotive of industriële sectoren</li>
+  </ul>
+  <button class="minimize-button">Minimaliseer</button>
+</div>
+<div class="tab-content" id="tab2">
+  <h2>Pilaar 2: Zij-instroom/Omscholingsleerling (2 jaar)</h2>
+  <p><strong>Leeftijd:</strong> 18+</p>
+  <p><strong>Werk:</strong> 4 dagen per week</p>
+  <p><strong>Studie:</strong> 1 dag op het ROVC opleidingsinstituut + Opleidingscentrum</p>
+  <p><strong>Focus:</strong> Volledig gericht op koeltechniek</p>
+  <p><strong>Vereisten:</strong> Rijbewijs vereist</p>
+  <p><strong>Wervingscyclus:</strong> Maandelijks</p>
+  <p><strong>Startdata:</strong> Eerste week van elke maand</p>
+  <h3>Ideaal Kandidaat Profiel</h3>
+  <p>Voorbeeld Kandidaat: Lisa van den Berg, 24 jaar oud, momenteel elektricien maar wil overschakelen naar koeltechniek.</p>
+  <p><strong>Waarom dit programma?</strong> Heeft al enige technische ervaring, maar heeft formele training in koeltechniek nodig.</p>
+  <h3>Potentiële Achtergronden:</h3>
+  <ul>
+    <li>Elektriciens</li>
+    <li>Bouwvakkers</li>
+    <li>Loodgieters</li>
+    <li>Algemene onderhoudstechnici</li>
+    <li>Automotive monteurs</li>
+    <li>HVAC helpers of assistenten</li>
+    <li>Magazijnmedewerkers met technische vaardigheden</li>
+    <li>Facilitair onderhoudspersoneel</li>
+  </ul>
+  <button class="minimize-button">Minimaliseer</button>
+</div>
+<div class="tab-content" id="tab3">
+  <h2>Pilaar 3: Specialisatie in Koeltechniek (1 jaar)</h2>
+  <p><strong>Leeftijd:</strong> 21+</p>
+  <p><strong>Ervaring:</strong> Vereist technische ervaring, maar niet in koeltechniek</p>
+  <p><strong>Opleiding:</strong> Gespecialiseerde training in koeltechniek</p>
+  <p><strong>Werk:</strong> 4 dagen per week</p>
+  <p><strong>Studie:</strong> 1 dag op het ROVC opleidingsinstituut</p>
+  <p><strong>Zelfstandigheid:</strong> Hoge mate van zelfstandigheid</p>
+  <p><strong>Vereisten:</strong> Rijbewijs vereist</p>
+  <p><strong>Wervingscyclus:</strong> Doorlopend</p>
+  <p><strong>Startdata:</strong> Eerste week van elke maand</p>
+  <h3>Ideaal Kandidaat Profiel</h3>
+  <p>Voorbeeld Kandidaat: Peter de Vries, 30 jaar oud, een ervaren industrieel monteur in een productieomgeving, maar zonder koeltechnische ervaring.</p>
+  <p><strong>Waarom dit programma?</strong> Heeft al mechanische ervaring, maar heeft specifieke training nodig om over te stappen naar koeltechniek.</p>
+  <h3>Potentiële Achtergronden:</h3>
+  <ul>
+    <li>Industriële monteurs</li>
+    <li>Werktuigbouwkundig ingenieurs</li>
+    <li>Onderhoudstechnici in de productie</li>
+    <li>Machinebedieners met mechanische kennis</li>
+    <li>Automotive monteurs</li>
+    <li>Mechatronica specialisten</li>
+    <li>Energie systeem technici</li>
+    <li>Technisch supervisors in niet-koeltechnische sectoren</li>
+  </ul>
+  <button class="minimize-button">Minimaliseer</button>
+</div>
+      `,
+      en: `
+<div class="tab-container">
+  <div class="tab-buttons">
+    <button class="tab-button" data-tab="tab1">Pillar 1</button>
+    <button class="tab-button" data-tab="tab2">Pillar 2</button>
+    <button class="tab-button" data-tab="tab3">Pillar 3</button>
+  </div>
+</div>
+<div class="tab-content" id="tab1">
+  <h2>Pillar 1: BBL Student Apprenticeship (3 Years)</h2>
+  <p><strong>Age:</strong> 15+</p>
+  <p><strong>Work:</strong> 4 days per week</p>
+  <p><strong>Study:</strong> 1 day at school (linked to the Ministry of Education)</p>
+  <p><strong>Focus:</strong> Diploma-oriented program</p>
+  <p><strong>Recruitment Cycle:</strong> Twice per year (January &amp; July)</p>
+  <p><strong>Onboarding Dates:</strong> March &amp; September</p>
+  <h3>Ideal Candidate Profile</h3>
+  <p>Example Candidate: Tom Janssen, 16 years old, finishing secondary school, likes working with tools, seeking a stable career.</p>
+  <p><strong>Why This Program?</strong> Wants to combine school and work to build a career in refrigeration.</p>
+  <h3>Potential Backgrounds:</h3>
+  <ul>
+    <li>Secondary school students (VMBO, MBO level 2-3)</li>
+    <li>General laborers interested in technical trades</li>
+    <li>School dropouts seeking a structured learning path</li>
+    <li>Junior warehouse workers with mechanical interests</li>
+    <li>Assistant mechanics in automotive or industrial sectors</li>
+  </ul>
+  <button class="minimize-button">Minimize</button>
+</div>
+<div class="tab-content" id="tab2">
+  <h2>Pillar 2: Sidestream/Retraining Apprenticeship (2 Years)</h2>
+  <p><strong>Age:</strong> 18+</p>
+  <p><strong>Work:</strong> 4 days per week</p>
+  <p><strong>Study:</strong> 1 day at ROVC training institute + Carrier training center</p>
+  <p><strong>Focus:</strong> Fully focused on refrigeration technology</p>
+  <p><strong>Requirement:</strong> Driving license required</p>
+  <p><strong>Recruitment Cycle:</strong> Monthly</p>
+  <p><strong>Onboarding Dates:</strong> First week of every month</p>
+  <h3>Ideal Candidate Profile</h3>
+  <p>Example Candidate: Lisa van den Berg, 24, currently an electrician but wants to switch to refrigeration.</p>
+  <p><strong>Why This Program?</strong> Already has some technical experience but needs formal refrigeration training.</p>
+  <h3>Potential Backgrounds:</h3>
+  <ul>
+    <li>Electricians</li>
+    <li>Construction workers</li>
+    <li>Plumbers</li>
+    <li>General maintenance technicians</li>
+    <li>Automotive mechanics</li>
+    <li>HVAC helpers or assistants</li>
+    <li>Warehouse operators with technical skills</li>
+    <li>Facility maintenance workers</li>
+  </ul>
+  <button class="minimize-button">Minimize</button>
+</div>
+<div class="tab-content" id="tab3">
+  <h2>Pillar 3: Refrigeration Specialization (1 Year)</h2>
+  <p><strong>Age:</strong> 21+</p>
+  <p><strong>Experience:</strong> Requires technical experience, but not in refrigeration</p>
+  <p><strong>Training:</strong> Specialized refrigeration technology</p>
+  <p><strong>Work:</strong> 4 days per week</p>
+  <p><strong>Study:</strong> 1 day at ROVC training institute</p>
+  <p><strong>Independence:</strong> High degree of independence</p>
+  <p><strong>Requirement:</strong> Driving license required</p>
+  <p><strong>Recruitment Cycle:</strong> Rolling basis</p>
+  <p><strong>Onboarding Dates:</strong> First week of every month</p>
+  <h3>Ideal Candidate Profile</h3>
+  <p>Example Candidate: Peter de Vries, 30, an experienced industrial mechanic but no refrigeration experience.</p>
+  <p><strong>Why This Program?</strong> Already has mechanical experience but needs specific refrigeration training.</p>
+  <h3>Potential Backgrounds:</h3>
+  <ul>
+    <li>Industrial mechanics</li>
+    <li>Mechanical engineers</li>
+    <li>Maintenance technicians in manufacturing</li>
+    <li>Machine operators with mechanical knowledge</li>
+    <li>Automotive mechanics</li>
+    <li>Mechatronics specialists</li>
+    <li>Energy system technicians</li>
+    <li>Technical supervisors in non-refrigeration sectors</li>
+  </ul>
+  <button class="minimize-button">Minimize</button>
+</div>
+      `
+    };
+
+    // Timeline content for Dutch and English
+    const timelineContent = {
+      nl: `
+<div class="timeline-item">
+  <details class="timeline-details">
+    <summary>1. Werving &amp; Selectie</summary>
+    <div class="details-content">
+      <p>In deze fase identificeert en selecteert het TA-team geschikte kandidaten op basis van de functie-eisen. Vervolgens deelt het deze kandidaten met de HM voor een snelle beoordeling via Workday.</p>
+      <ul>
+        <li>Taak: Zoeken &amp; selecteren van kandidaten (TA)</li>
+        <li>Taak: Kandidaat presenteren aan HM met CV (TA)</li>
+        <li>Taak: Beoordelen en goedkeuren/afwijzen binnen 2 werkdagen (HM)</li>
+        <li>Taak: Bij goedkeuring van HM via Workday wordt de kandidaat gescreend (TA)</li>
+      </ul>
+    </div>
+  </details>
+</div>
+<div class="timeline-item">
+  <details class="timeline-details">
+    <summary>2. Eerste beoordeling &amp; Interview</summary>
+    <div class="details-content">
+      <p>Zodra de HM goedkeuring geeft, gaan we verder met een eerste virtueel interview om de geschiktheid van de kandidaat te beoordelen. Indien nodig volgt een gesprek op locatie.</p>
+      <ul>
+        <li>Taak: Plan eerste Teams-interview (TA)</li>
+        <li>Taak: Voer het interview uit (HM &amp; Leonie)</li>
+        <li>Taak: Plant een tweede interview op locatie indien nodig (TA)</li>
+      </ul>
+    </div>
+  </details>
+</div>
+<div class="timeline-item">
+  <details class="timeline-details">
+    <summary>3. Evaluatie &amp; Feedback</summary>
+    <div class="details-content">
+      <p>Snelle feedback van alle betrokkenen zorgt ervoor dat we de voortgang behouden. Het TA-team verzamelt en deelt inzichten zodat we gezamenlijk een beslissing kunnen nemen.</p>
+      <ul>
+        <li>Taak: HM geeft binnen 1 werkdag feedback aan TA over interview (HM &amp; Leonie)</li>
+        <li>Taak: Contacteert kandidaat voor feedback interview (TA)</li>
+        <li>Taak: Bespreekt vervolgstappen op basis van alle feedback (TA &amp; HM)</li>
+      </ul>
+    </div>
+  </details>
+</div>
+<div class="timeline-item">
+  <details class="timeline-details">
+    <summary>4. Besluitvorming &amp; Aanbod</summary>
+    <div class="details-content">
+      <p>Wanneer beide partijen akkoord zijn om verder te gaan (HM en kandidaat), coördineren we de details van het aanbod en stellen we een realistische startdatum vast, rekening houdend met eventuele opzegtermijn.</p>
+      <ul>
+        <li>Taak: Ontvangt aanbodgegevens (HM &amp; Leonie)</li>
+        <li>Taak: Contacteert kandidaat over te ontvangen aanbod (TA)</li>
+      </ul>
+    </div>
+  </details>
+</div>
+<div class="timeline-item">
+  <details class="timeline-details">
+    <summary>5. Aanbieding &amp; Afronding</summary>
+    <div class="details-content">
+      <p>Nadat de kandidaat heeft geaccepteerd, vraagt TA het contract aan bij GPS en zorgt dat alles juist in Workday wordt afgerond. GPS deelt het contract met de kandidaat via mail voor tekenen. Duidelijke communicatie zorgt voor een soepele overgang.</p>
+      <ul>
+        <li>Taak: Stuurt het definitieve aanbod ter ondertekening naar kandidaat (TA)</li>
+        <li>Taak: Kandidaat tekent en retourneert het aanbod (TA)</li>
+        <li>Taak: TA informeert HM wanneer alles getekend is en aangevraagd is (TA)</li>
+        <li>Taak: Aanvraag contract GPS (TA)</li>
+      </ul>
+    </div>
+  </details>
+</div>
+<div class="timeline-item">
+  <details class="timeline-details">
+    <summary>6. Procesbewaking &amp; Overleg</summary>
+    <div class="details-content">
+      <p>Regelmatige afstemmingen helpen ons de voortgang te volgen, vertragingen aan te pakken en ervoor te zorgen dat we ons doel halen om binnen 2 werkdagen na een positief interview een aanbod te doen.</p>
+      <ul>
+        <li>Taak: Wekelijkse afstemming over openstaande vacatures (Leonie &amp; TA)</li>
+        <li>Taak: Bewaken van doorlooptijden &amp; signaleren van vertragingen (TA)</li>
+        <li>Taak: Neem tijdig beslissingen (Alle betrokkenen)</li>
+        <li>Taak: Ontvang wekelijks tijdsloten van HM &amp; Leonie om interviews in te plannen (TA voorstel)</li>
+      </ul>
+    </div>
+  </details>
+</div>
+      `,
+      en: `
+<div class="timeline-item">
+  <details class="timeline-details">
+    <summary>1. Recruitment &amp; Selection</summary>
+    <div class="details-content">
+      <p>In this phase, the TA team identifies and selects suitable candidates based on the job requirements. Then, the candidates are shared with the HM for a quick review via Workday.</p>
+      <ul>
+        <li>Task: Search &amp; select candidates (TA)</li>
+        <li>Task: Present candidate with resume to HM (TA)</li>
+        <li>Task: Approve/reject within 2 working days (HM)</li>
+        <li>Task: If approved via Workday, the candidate is screened (TA)</li>
+      </ul>
+    </div>
+  </details>
+</div>
+<div class="timeline-item">
+  <details class="timeline-details">
+    <summary>2. Initial Assessment &amp; Interview</summary>
+    <div class="details-content">
+      <p>Once the HM gives approval, we proceed with a virtual interview to assess the candidate. If needed, an on-site interview follows.</p>
+      <ul>
+        <li>Task: Schedule first Teams interview (TA)</li>
+        <li>Task: Conduct the interview (HM &amp; Leonie)</li>
+        <li>Task: Schedule a second on-site interview if needed (TA)</li>
+      </ul>
+    </div>
+  </details>
+</div>
+<div class="timeline-item">
+  <details class="timeline-details">
+    <summary>3. Evaluation &amp; Feedback</summary>
+    <div class="details-content">
+      <p>Quick feedback from all involved ensures we maintain momentum. The TA team gathers and shares insights so we can decide collectively.</p>
+      <ul>
+        <li>Task: HM provides feedback to TA within 1 working day (HM &amp; Leonie)</li>
+        <li>Task: Contact candidate for interview feedback (TA)</li>
+        <li>Task: Discuss next steps based on feedback (TA &amp; HM)</li>
+      </ul>
+    </div>
+  </details>
+</div>
+<div class="timeline-item">
+  <details class="timeline-details">
+    <summary>4. Decision &amp; Offer</summary>
+    <div class="details-content">
+      <p>When both parties agree (HM and candidate), we coordinate offer details and set a realistic start date, considering any notice period.</p>
+      <ul>
+        <li>Task: Receive offer details (HM &amp; Leonie)</li>
+        <li>Task: Contact candidate about the offer (TA)</li>
+      </ul>
+    </div>
+  </details>
+</div>
+<div class="timeline-item">
+  <details class="timeline-details">
+    <summary>5. Offering &amp; Completion</summary>
+    <div class="details-content">
+      <p>After acceptance, TA requests the contract from GPS and completes all steps in Workday. GPS emails the contract to the candidate for signing. Clear communication ensures a smooth transition.</p>
+      <ul>
+        <li>Task: Send final offer for signature (TA)</li>
+        <li>Task: Candidate signs and returns the offer (TA)</li>
+        <li>Task: TA notifies HM when all is signed (TA)</li>
+        <li>Task: Request contract from GPS (TA)</li>
+      </ul>
+    </div>
+  </details>
+</div>
+<div class="timeline-item">
+  <details class="timeline-details">
+    <summary>6. Process Monitoring &amp; Alignment</summary>
+    <div class="details-content">
+      <p>Regular check-ins help track progress, address delays, and ensure we meet our target: sending an offer within 2 working days after a positive interview.</p>
+      <ul>
+        <li>Task: Weekly check-in on open vacancies (Leonie &amp; TA)</li>
+        <li>Task: Monitor timelines &amp; flag delays (TA)</li>
+        <li>Task: Make timely decisions (All involved)</li>
+        <li>Task: Receive weekly time slots from HM &amp; Leonie for scheduling interviews (TA proposal)</li>
+      </ul>
+    </div>
+  </details>
+</div>
+      `
+    };
+
+    let currentLanguage = 'nl';
+
+    // References
+    const pillarsContainer = document.querySelector('.pillars');
+    const timelineContainer = document.querySelector('.timeline');
+    const pageTitle = document.querySelector('.page-title');
+
+    function loadContent() {
+      pillarsContainer.innerHTML = pillarsContent[currentLanguage];
+      timelineContainer.innerHTML = timelineContent[currentLanguage];
+      initializeScripts();
+    }
+
+    // Load initial content
+    loadContent();
+
+    document.getElementById('toggleLanguage').addEventListener('click', () => {
+      currentLanguage = currentLanguage === 'nl' ? 'en' : 'nl';
+      loadContent();
+    });
+
+    let editMode = false;
+    document.getElementById('toggleEdit').addEventListener('click', () => {
+      if (!editMode) {
+        const pwd = prompt('Enter password to enable editing:');
+        if (pwd === '12345') {
+          editMode = true;
+          pillarsContainer.contentEditable = 'true';
+          timelineContainer.contentEditable = 'true';
+          pageTitle.contentEditable = 'true';
+          alert('Editing enabled. You can now modify text directly on the page.');
+        } else {
+          alert('Incorrect password!');
+        }
+      } else {
+        editMode = false;
+        pillarsContainer.contentEditable = 'false';
+        timelineContainer.contentEditable = 'false';
+        pageTitle.contentEditable = 'false';
+        alert('Editing disabled.');
+      }
+    });
+
+    function initializeScripts() {
+      // Tab toggling for pillars
+      document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', () => {
+          const tab = button.getAttribute('data-tab');
+          const content = document.getElementById(tab);
+          if (button.classList.contains('active')) {
+            button.classList.remove('active');
+            content.classList.remove('active');
+          } else {
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(cont => cont.classList.remove('active'));
+            button.classList.add('active');
+            content.classList.add('active');
+          }
+        });
+      });
+      
+      // Minimize button functionality
+      document.querySelectorAll('.minimize-button').forEach(minButton => {
+        minButton.addEventListener('click', function() {
+          const parentContent = this.parentElement;
+          parentContent.classList.remove('active');
+          const tabId = parentContent.getAttribute('id');
+          document.querySelectorAll('.tab-button').forEach(btn => {
+            if (btn.getAttribute('data-tab') === tabId) {
+              btn.classList.remove('active');
+            }
+          });
+        });
+      });
+      
+      // Timeline items open/close behavior
+      document.querySelectorAll('.timeline-item').forEach(item => {
+        const details = item.querySelector('.timeline-details');
+        details.addEventListener('toggle', function() {
+          if (this.open) {
+            item.classList.add('open');
+          } else {
+            item.classList.remove('open');
+          }
+        });
+        // If open by default
+        if (details.open) {
+          item.classList.add('open');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
